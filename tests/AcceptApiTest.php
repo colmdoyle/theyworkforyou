@@ -25,7 +25,7 @@ class AcceptApiTest extends FetchPageTestCase
     public function testMissingKeyFailure()
     {
         $page = $this->fetch_page('getConstituencies');
-        $this->assertEquals('{"error":"No API key provided. Please see http://www.theyworkforyou.com/api/key for more information."}', $page);
+        $this->assertEquals('{"error":"No API key provided. Please see https://www.theyworkforyou.com/api/key for more information."}', $page);
     }
 
     /**

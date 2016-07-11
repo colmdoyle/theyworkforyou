@@ -119,7 +119,7 @@ if (get_http_var('recent')) {
     if ($pid) {
         $URL = new URL('search');
         $URL->insert( array('pid'=>$pid, 'pop'=>1) );
-        header('Location: http://' . DOMAIN . $URL->generate('none'));
+        header('Location: ' . $URL->generate('none'));
         exit;
     }
 }
@@ -451,7 +451,6 @@ switch ($pagetype) {
 
     case 'divisions':
         $policyID = get_http_var('policy');
-        $answered_q = get_http_var('answered');
         if ( $policyID ) {
             $policiesList = new MySociety\TheyWorkForYou\Policies( $policyID );
         } else {
@@ -465,12 +464,6 @@ switch ($pagetype) {
         } else {
             $data['policydivisions'] = $divisions->getAllMemberDivisionsByPolicy();
         }
-
-        // data for the 'what else would you like to see' question box
-        $data['user_code'] = bin2hex(urandom_bytes(16));
-        $data['auth_signature'] = auth_sign_with_shared_secret($data['user_code'], OPTION_SURVEY_SECRET);
-        $data['page_url'] = "http://" . DOMAIN . $_SERVER['REQUEST_URI'] . ( $policyID ? '&' : '?' ) . 'answered=1';
-        $data['answered_q'] = $answered_q;
 
         // Send the output for rendering
         MySociety\TheyWorkForYou\Renderer::output('mp/divisions', $data);
@@ -521,7 +514,7 @@ function get_person_by_id($pid) {
     // Ensure that we're actually at the current, correct and canonical URL for the person. If not, redirect.
     // No need to worry about other URL syntax forms for vote pages, they shouldn't happen.
     $at = str_replace('/mp/', "/$this_page/", get_http_var('url'));
-    $shouldbe = urldecode($MEMBER->url(FALSE));
+    $shouldbe = urldecode($MEMBER->url());
     if ($pagetype) {
         $shouldbe .= "/$pagetype";
     }

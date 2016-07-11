@@ -15,7 +15,7 @@ function send_subscribe_email($campaigner, $token) {
     $to = $campaigner;
     $from = "TheyWorkForYou <" . CONTACTEMAIL . ">";
     $subject = 'Confirm that you want to Free our Bills!';
-    $url = "http://" . DOMAIN . '/B/' . $token;
+    $url = "https://" . DOMAIN . '/B/' . $token;
     $message = 'Please click on the link below to confirm your email address.
 You will then be signed up to TheyWorkForYou\'s campaign to Free our Bills.
 

@@ -11,7 +11,7 @@ if ($q_method = get_http_var('method')) {
     } else {
         $key = get_http_var('key');
         if (!$key) {
-            api_error('No API key provided. Please see http://www.theyworkforyou.com/api/key for more information.');
+            api_error('No API key provided. Please see https://www.theyworkforyou.com/api/key for more information.');
             exit;
         }
         $check = api_check_key($key);
@@ -89,7 +89,7 @@ function api_documentation_front($method, $explorer) {
     $PAGE->page_start();
     $PAGE->stripe_start();
     include_once 'api_'. $method . '.php';
-    print '<p align="center"><strong>http://www.theyworkforyou.com/api/' . $method . '</strong></p>';
+    print '<p align="center"><strong>https://www.theyworkforyou.com/api/' . $method . '</strong></p>';
     api_call_user_func_or_error('api_' . $method . '_front', array(), 'No documentation yet', 'html');
 ?>
 <h4>Explorer</h4>
@@ -124,7 +124,7 @@ Output:
                 $qs[] = _htmlspecialchars(rawurlencode($parameter) . '=' . urlencode(get_http_var($parameter)));
         }
         print '<h4><a name="output"></a>Output</h4>';
-        print '<p>URL for this: <strong>http://www.theyworkforyou.com/api/';
+        print '<p>URL for this: <strong>https://www.theyworkforyou.com/api/';
         print $method . '?' . join('&amp;', $qs) . '&amp;output='._htmlspecialchars(get_http_var('output')).'</strong></p>';
         print '<pre>' . _htmlspecialchars($explorer) . '</pre>';
     }
@@ -191,7 +191,7 @@ available under the
 <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons
 Attribution-ShareAlike license version 2.5</a>.
 
-<p>Please credit us by linking to <a href="http://www.theyworkforyou.com/">TheyWorkForYou</a>
+<p>Please credit us by linking to <a href="https://www.theyworkforyou.com/">TheyWorkForYou</a>
 with wording such as "Data service provided by TheyWorkForYou" on the page
 where the data is used. This attribution is optional if you've paid for use of
 the service.
@@ -204,7 +204,7 @@ the service.
     defaults to <kbd>js</kbd>.
 </p>
 <p align="center">
-    <strong>http://www.theyworkforyou.com/api/<em>function</em>?key=<em>key</em>&amp;output=<em>output</em>&amp;<em>other_variables</em></strong>
+    <strong>https://www.theyworkforyou.com/api/<em>function</em>?key=<em>key</em>&amp;output=<em>output</em>&amp;<em>other_variables</em></strong>
 </p>
 <p>
     The current version of the API is <em>1.0.0</em>. If we make changes to
@@ -263,7 +263,7 @@ to discuss things.</p>
 <h3>Example</h3>
 
 <ul>
-<li><a href="javascript:function foo(r) {if (r.twfy.url)window.location=r.twfy.url;};(function () {var s=document.createElement('script');s.setAttribute('src','http://theyworkforyou.com/api/convertURL?key=Gbr9QgCDzHExFzRwPWGAiUJ5&callback=foo&url='+encodeURIComponent(window.location));s.setAttribute('type','text/javascript');document.getElementsByTagName('head')[0].appendChild(s);})()">Hansard prettifier</a> - drag this bookmarklet to your bookmarks bar, or bookmark it. Then if you ever find yourself on the official site, clicking this will try and take you to the equivalent page on TheyWorkForYou. (Tested in IE, Firefox, Opera.)</li>
+<li><a href="javascript:function foo(r) {if (r.twfy.url)window.location=r.twfy.url;};(function () {var s=document.createElement('script');s.setAttribute('src','https://www.theyworkforyou.com/api/convertURL?key=Gbr9QgCDzHExFzRwPWGAiUJ5&callback=foo&url='+encodeURIComponent(window.location));s.setAttribute('type','text/javascript');document.getElementsByTagName('head')[0].appendChild(s);})()">Hansard prettifier</a> - drag this bookmarklet to your bookmarks bar, or bookmark it. Then if you ever find yourself on the official site, clicking this will try and take you to the equivalent page on TheyWorkForYou. (Tested in IE, Firefox, Opera.)</li>
 </ul>
 
 <?php
