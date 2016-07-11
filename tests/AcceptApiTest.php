@@ -16,7 +16,8 @@ class AcceptApiTest extends FetchPageTestCase
 
     private function fetch_page($method, $vars = array())
     {
-        return $this->base_fetch_page($method, $vars, 'www/docs/api');
+        $vars['method'] = $method;
+        return $this->base_fetch_page($vars, 'api');
     }
 
     /**

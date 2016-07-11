@@ -50,7 +50,7 @@ It also spans multiple lines.");
     {
         $comment = new COMMENT(2);
         $this->assertEquals(prepare_comment_for_display($comment->body()),
-            '<a href="https://www.theyworkforyou.example.org/this/is/a/coment/with/a/very/long/URL/that/contains/http://something/as/it/is/an/archive" rel="nofollow">https://www.theyworkforyou.example.org/this/is/a/coment/with/a/ve...</a>');
+            '<a href="https://www.theyworkforyou.example.org/this/is/a/coment/with/a/very/long/URL/that/contains/http://something/as/it/is/an/archive" rel="nofollow">https://www.theyworkforyou.example.org/this/is/a/coment/with...</a>');
     }
 
     /**
